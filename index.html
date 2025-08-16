@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Lead Harvester Demo&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: Arial; margin: 30px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input, button { padding: 5px; font-size: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>table { border-collapse: collapse; margin-top: 20px; width: 100%; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Lead Harvester Demo&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label&gt;Enter ZIP Code: &lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="zipcode" value="64118"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="showLeads()"&gt;Search&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="results"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showLeads() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const zip = document.getElementById("zipcode").value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resultsDiv = document.getElementById("results");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const demoLeads = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ source: "circuit7.net", type: "probate-court", title: "Clay County Probate Division", url: "https://www.circuit7.net/probate/", address: "Clay County, MO", notes: "Official county probate page" },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ source: "courts.mo.gov", type: "divorce-docket", title: "Clay County Divorce Dockets", url: "https://www.courts.mo.gov/cnet/welcome.do", address: "Clay County, MO", notes: "Statewide public docket portal" }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (zip === "64118") {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let table = "&lt;table&gt;&lt;tr&gt;&lt;th&gt;Source&lt;/th&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Title&lt;/th&gt;&lt;th&gt;Address&lt;/th&gt;&lt;th&gt;Notes&lt;/th&gt;&lt;/tr&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>demoLeads.forEach(lead =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>table += `&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${lead.source}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${lead.type}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;a href="${lead.url}" target="_blank"&gt;${lead.title}&lt;/a&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${lead.address}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${lead.notes}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>table += "&lt;/table&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resultsDiv.innerHTML = table;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resultsDiv.innerHTML = "&lt;p&gt;No leads found for this ZIP code.&lt;/p&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
